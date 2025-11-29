@@ -1,0 +1,110 @@
+inputs:
+  regulatory_document:
+    type: file
+    data_source_id: 0d225047-f40e-4515-946a-732675716ddf
+    file_name: regulatory_document.txt
+  transaction_records:
+    type: file
+    required: true
+
+assistants:
+    model: 'gpt-4.1'
+    datasource_ids:
+      - '0d225047-f40e-4515-946a-732675716ddf'
+    system_prompt: |
+      You are a Compliance Extractor. Extract all compliance requirements from the provided regulatory document.
+
+  - id: transaction_analyzer
+    model: 'gpt-4.1'
+    system_prompt: |
+      You are a Transaction Analyzer. Given compliance requirements and transaction records, flag all non-compliant transactions and explain the reasons.
+
+  - id: compliance_report_drafter
+    model: 'gpt-4.1'
+    system_prompt: |
+      You are a Compliance Report Drafter. Summarize the compliance requirements and flagged transactions into a formal report.
+
+  - id: pdf_generator
+    model: 'gpt-4.1'  # Or use a dedicated PDF tool/assistant if available
+    system_prompt: |
+      You are a PDF Generator. Convert the provided compliance report into a well-formatted PDF file for distribution.
+
+  - id: artifact_publisher
+    model: 'gpt-4.1'  # Or use a dedicated publishing tool/assistant if available
+    system_prompt: |
+      You are an Artifact Publisher. Upload the provided PDF file to the document repository and return a secure download link.
+
+states:
+  - id: extract_compliance_requirements
+    assistant_id: compliance_extractor
+    task: |
+      Extract all compliance requirements from the provided regulatory document.
+    output_schema: |
+      {
+        "type": "object",
+        "properties": {
+          "compliance_requirements": {"type":"string"}
+        },
+        "required":["compliance_requirements"]
+      }
+    next:
+      state_id: analyze_transactions
+
+  - id: analyze_transactions
+    assistant_id: transaction_analyzer
+    task: |
+      Using the compliance requirements and the provided transaction_records file, parse the CSV and flag all non-compliant transactions. For each flagged transaction, specify the rule violated and the reason.
+    output_schema: |
+      {
+        "type": "object",
+        "properties": {
+          "flagged_transactions": {"type":"string"}
+        },
+        "required":["flagged_transactions"]
+      }
+    next:
+      state_id: draft_compliance_report
+
+  - id: draft_compliance_report
+    assistant_id: compliance_report_drafter
+    task: |
+      Summarize the compliance requirements and flagged transactions into a formal compliance report.
+    output_schema: |
+      {
+        "type": "object",
+        "properties": {
+          "compliance_report": {"type":"string"}
+        },
+        "required":["compliance_report"]
+      }
+    next:
+      state_id: generate_pdf
+
+  - id: generate_pdf
+    assistant_id: pdf_generator
+    task: |
+      Convert the compliance report into a professional PDF file for distribution.
+    output_schema: |
+      {
+        "type": "object",
+        "properties": {
+          "compliance_report_pdf": {"type":"file"}
+        },
+        "required":["compliance_report_pdf"]
+      }
+    next:
+      state_id: publish_pdf
+
+  - id: publish_pdf
+    assistant_id: artifact_publisher
+    task: |
+      Upload the compliance_report_pdf to the document repository and return a secure download link.
+    output_schema: |
+      {
+        "type": "object",
+        "properties": {
+          "pdf_download_url": {"type":"string"}
+        },
+        "required":["pdf_download_url"]
+      }
+    next: {}

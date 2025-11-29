@@ -1,0 +1,26 @@
+Transaction ID,Date,Amount,Counterparty Country,Customer ID,Customer Onboard Date,Transaction Type,Source of Funds,Internal Account,Status
+TXN001,25-11-25,12500,USA,CUST1001,01-10-25,Wire Transfer,Declared,No,Completed
+TXN002,25-11-25,8000,IRN,CUST1002,10-11-25,Wire Transfer,Undeclared,No,Completed
+TXN003,26-11-25,55000,UK,CUST1003,15-09-25,Wire Transfer,Declared,No,Completed
+TXN004,26-11-25,9500,FRA,,20-10-25,Cryptocurrency,Undeclared,No,Completed
+TXN005,27-11-25,7000,RUS,CUST1004,01-11-25,Cryptocurrency,Declared,No,Completed
+TXN006,27-11-25,15000,USA,CUST1005,05-10-25,Wire Transfer,Declared,No,Completed
+TXN007,27-11-25,3000,USA,CUST1001,01-10-25,Cryptocurrency,Declared,No,Completed
+TXN008,28-11-25,45000,CHN,CUST1006,15-11-25,Wire Transfer,Declared,No,Completed
+TXN009,28-11-25,2000,USA,CUST1007,20-11-25,Cryptocurrency,Undeclared,No,Completed
+TXN010,28-11-25,51000,USA,CUST1008,10-09-25,Wire Transfer,Declared,No,Completed
+TXN011,28-11-25,6000,TUR,CUST1009,05-11-25,Wire Transfer,Declared,No,Completed
+TXN012,28-11-25,30000,VEN,CUST1010,25-10-25,Cryptocurrency,Declared,No,Completed
+TXN013,28-11-25,12000,SDN,CUST1011,01-11-25,Wire Transfer,Undeclared,No,Completed
+TXN014,28-11-25,48000,USA,CUST1012,15-10-25,Wire Transfer,Declared,Yes,Completed
+TXN015,28-11-25,52000,UK,CUST1013,01-09-25,Wire Transfer,Declared,No,Completed
+TXN016,28-11-25,4000,NGA,CUST1014,25-11-25,Cryptocurrency,Undeclared,No,Completed
+TXN017,28-11-25,18000,PRK,CUST1015,10-11-25,Wire Transfer,Declared,No,Completed
+TXN018,28-11-25,2500,USA,CUST1016,27-11-25,Cryptocurrency,Declared,No,Completed
+TXN019,28-11-25,100000,USA,CUST1017,05-09-25,Wire Transfer,Declared,No,Completed
+TXN020,28-11-25,9000,UKR,CUST1018,01-11-25,Wire Transfer,Declared,No,Completed
+TXN021,28-11-25,1500,USA,CUST1019,28-11-25,Cryptocurrency,Undeclared,No,Completed
+TXN022,28-11-25,60000,USA,CUST1020,01-09-25,Wire Transfer,Declared,No,Completed
+TXN023,28-11-25,5000,USA,CUST1021,15-11-25,Wire Transfer,Declared,Yes,Completed
+TXN024,28-11-25,12000,SYR,CUST1022,01-11-25,Wire Transfer,Declared,No,Completed
+TXN025,28-11-25,8000,USA,CUST1023,10-11-25,Cryptocurrency,Declared,No,Completed
